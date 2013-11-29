@@ -4,6 +4,7 @@ class Movie
   CHILDRENS = 2
   attr_reader :title
   attr_accessor :price_code
+
   def initialize(title, price_code)
     @title, @price_code = title, price_code
   end
@@ -25,15 +26,26 @@ class Customer
     @rentals = []
   end
 
-  def add_rental(arg)
-    @rentals << arg
+  def statement
+    -----
   end
+end
 
+
+
+
+
+
+
+
+====================================================================================================================
+class Customer
   def statement
     total_amount, frequent_renter_points = 0, 0
     result = "Rental Record for {@name}\n"
     @rentals.each do |element|
       this_amount = 0
+
       #determine amounts for each line
       case element.movie.price_code
       when Movie::REGULAR
@@ -45,24 +57,36 @@ class Customer
         this_amount += 1.5
         this_amount += (element.days_rented - 3) * 1.5 if element.days_rented > 3
       end
-      add frequent renter points
+
+      #add frequent renter points
       frequent_renter_points += 1
-      add bonus for a two day new release rental
+      
+      #add bonus for a two day new release rental
       if element.movie.price_code == Movie.NEW_RELEASE &&
         element.days_rented > 1
         frequent_renter_points += 1
       end
-      show figures for this rental
+
+      #show figures for this rental
       result += "\t" + each.movie.title + "\t" + this_amount.to_s + "\n"
       total_amount += this_amount
     end
-    add footer lines
+    #add footer lines
     result += "Amount owed is {total_amount}\n"
     result += "You earned {frequent_renter_points} frequent renter points"
     result
   end
 end
 
+
+
+
+
+
+
+
+
+#Extract rental calculation method
 ====================================================================================================================
 
 
@@ -91,9 +115,15 @@ end
 
 
 
+
+
+
+
+
+
+
+
 ====================================================================================================================
-
-
   class Rental
     def charge
       result = 0
@@ -121,6 +151,17 @@ class Customer
   -----
 end
 
+
+
+
+
+
+
+
+
+
+
+
 #Extracting Frequent Renter Points
 ====================================================================================================================
 
@@ -134,12 +175,33 @@ end
   end
 
 
+#Extract total charge calculated method
 ====================================================================================================================
   class Customer
     def total_charge
       @rentals.inject(0) { |sum, rental| sum + rental.charge }
     end
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #By reusing calculation logic print result into html page
 ====================================================================================================================
@@ -159,6 +221,26 @@ end
       result
     end
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ====================================================================================================================
@@ -185,4 +267,55 @@ class Rental
     movie.charge(days_rented)
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ====================================================================================================================
+
+  class Movie
+    def charge(days_rented)
+      @price.charge(days_rented)
+    end
+
+    def price_code=(value)
+      @price_code = value
+      @price = case price_code
+               when REGULAR: RegularPrice.new
+               when NEW_RELEASE: NewReleasePrice.new
+               when CHILDRENS: ChildrensPrice.new
+               end
+    end
+  end
+
+class RegularPrice
+  def charge(days_rented)
+    result = 2
+    result += (days_rented - 2) * 1.5 if days_rented > 2
+    result
+  end
+end
+
+class NewReleasePrice
+  def charge(days_rented)
+    days_rented * 3
+  end
+end
+
+class ChildrensPrice
+  def charge(days_rented)
+    result = 1.5
+    result += (days_rented - 3) * 1.5 if days_rented > 3
+    result
+  end
+end

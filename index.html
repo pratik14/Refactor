@@ -12,6 +12,7 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
 
     <link href="css/impress-demo.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -26,32 +27,59 @@
     </div>
 
     <div class="step slide" data-x="0" data-y="-1500">
-        <p>As described by <b>Martin Fowler</b> It is change made to the internal structure of a software program to make it easier to understand and modify without changing its overall behavior.
-        <q>As described by me refactoring is cleaning up the code</q>
+        <div class='well'>
+            <p>As described by <b>Martin Fowler</b> It is change made to the internal structure of a software program to make it easier to understand and modify without changing its overall behavior.</p>
+        </div>
+        <div class='well'>
+            <div class='row'>
+                <div class='span3'>
+                    <img src='images/broom.jpg'>
+                </div>
+                <div class='span6'>
+                    <p >As described by me refactoring is cleaning up the code</p>
+                </div>
+        </div>
+        </div>
     </div>
 
     <div class="step slide" data-x="1000" data-y="-1500">
         <q><b>Why to Refactor?</b></q>
         <ul>
             <li>It improves design of software</li>
-            <li>It helps prgoram eaiser to understand and modify</li>
-            <li>Sometimes helps find corner bug</li>
+            <li>It helps program eaiser to understand and modify</li>
+            <li>Sometimes helps find corner case in program</li>
         </ul>
     </div>
 
     <div class="step slide" data-x="5000" data-y="-1500">
         <q>When to Refactor</q>
         <ul>
-            <li>While fixing a bug</li>
+            <li><img src='images/repair_bug.jpg'>While fixing a bug</li>
             <li>While adding feature to existing program</li>
         </ul>
     </div>
 
     <div class="step slide" data-x="6000" data-y="-1500">
-        <q><b>When not to refactor?</b></q>
+        <div class='row'>
+            <q>
+                <span>
+                    <img src='images/dont.jpeg' height='100' width='100'>
+                </span>
+                When not to refactor?
+            </q>
+        </div>
         <ul>
-            <li> When we dont have a full understanding of what program does</li>
-            <li>When you dont have strong  TEST CASE to confirm changes</li>
+            <li> When we dont have a full understanding of what program does
+                <span>
+                    <img src='images/confusion.jpg' width='100' height='100'>(Ram bharose Chal raha hai)
+                </span>
+            </li>
+            <li> 
+                When you dont have strong  TEST CASE to confirm changes
+                <span>
+                    <img src='images/siva.jpg' width='100' height='100'>(Haha I told you)
+                </span>
+            </li>
         </ul>
     </div>
 
@@ -71,20 +99,34 @@
     </div>
 
     <div class="step slide" data-x="9000" data-y="-1500">
-        <q>Issue with modules</q>
+        <q>Dilemma of extracting modules and class</q>
     </div>
 
     <div class="step slide" data-x="10000" data-y="-1500">
-        <q>While extracting a class answer these question</q>
-        <ol>
-            <li>What does a given method do?</li>
-            <li>What is the current object context that I am in?</li>
-            <li>What other methods I can call?</li>
-        </ol>
+        <div class='well'>
+            <p>When working through a snippet of code I like to ask myself the following questions:</p>
+            <ol>
+                <li>What does a given method do?</li>
+                <li>What is the current object context that I am in?</li>
+                <li>What other methods I can call?</li>
+            </ol>
+        </div>
     </div>
     
+    <div class="step slide" data-x="11000" data-y="-1500">
+        <div class='well'>
+            <q>I think module</q>
+            <ul>
+                <li>should never have dependancies on other modules</li>
+                <li>should never ever EVER muck with the internal state of its containing object</li>
+                <li>should have as narrow an interface as possible with its containing object</li>
+                <li>should have a coherent reason for existing that makes sense in isolation</li>
+                <li>should be tested in isolation against a fake container</li>
+            </ul>
+        </div>
+    </div>
 
-<script>
+    <script>
 if ("ontouchstart" in document.documentElement) { 
     document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
 }
