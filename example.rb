@@ -86,8 +86,10 @@ end
 
 
 
-#Extract rental calculation method
 ====================================================================================================================
+#Extract rental calculation method
+
+#Good code should communicate what it is doing clearly, and variable names are a key to clear code
 
 
 def statement 
@@ -124,6 +126,7 @@ end
 
 
 ====================================================================================================================
+#In most cases a method should be on the object whose data it uses;
   class Rental
     def charge
       result = 0
@@ -244,6 +247,14 @@ end
 
 
 ====================================================================================================================
+#For this to work I had to pass in the length of the rental, which of course is
+#data from the rental. The method effectively uses two pieces of data, the length
+#of the rental and the type of the movie. Why do I prefer to pass the length of
+#rental to the movie rather than the movie type to the rental? It’s because the proposed
+#changes are all about adding new types. Type information generally tends
+#to be more volatile. If I change the movie type, I want the least ripple effect, so I
+#prefer to calculate the charge within the movie.
+
 
   class Movie
     def charge(days_rented)
@@ -278,10 +289,9 @@ end
 
 
 
-
-
-
 ====================================================================================================================
+#Generate loose coupling between objects
+#Design systems whereby the parts that change often are isolated from the parts that stay consistent. That way, if changes are to occur, you will not have to go through all the systems code.
 
   class Movie
     def charge(days_rented)

@@ -44,11 +44,21 @@
 
     <div class="step slide" data-x="1000" data-y="-1500">
         <q><b>Why to Refactor?</b></q>
-        <ul>
-            <li>It improves design of software</li>
-            <li>It helps program eaiser to understand and modify</li>
-            <li>Sometimes helps find corner case in program</li>
-        </ul>
+    </div>
+
+    <div class="step slide" data-x="2000" data-y="-1500">
+        <q>It improves design of software</q>
+        <img src='images/pipe.jpg' height='400' width='400'>
+    </div>
+
+    <div class="step slide" data-x="3000" data-y="-1500">
+        <q>It helps program eaiser to understand and modify</q>
+        <img src='images/beatifull.jpg'>
+    </div>
+
+    <div class="step slide" data-x="4000" data-y="-1500">
+        <q>Sometimes helps find corner case in program</q>
+        <img src='images/stupid_bug.jpg'>
     </div>
 
     <div class="step slide" data-x="5000" data-y="-1500">
@@ -68,19 +78,23 @@
                 When not to refactor?
             </q>
         </div>
-        <ul>
-            <li> When we dont have a full understanding of what program does
-                <span>
-                    <img src='images/confusion.jpg' width='100' height='100'>(Ram bharose Chal raha hai)
-                </span>
-            </li>
-            <li> 
-                When you dont have strong  TEST CASE to confirm changes
-                <span>
-                    <img src='images/siva.jpg' width='100' height='100'>(Haha I told you)
-                </span>
-            </li>
-        </ul>
+        <div class='row'>
+            <div class='span3'>
+                <p>1.
+                    <span>
+                    <img src='images/programmer-problems.jpg'>
+                    </span>
+                </p>
+            </div>
+            <div class='span6'>
+                <p> 2. When you dont have strong  TEST CASE to confirm changes
+                    <span>
+                        <img src='images/siva.jpg' width='200' height='200'>
+                        (Haha I told you)
+                    </span>
+                </p>
+            </div>
+        </div>
     </div>
 
     <div class="step slide" data-x="7000" data-y="-1500">
@@ -112,7 +126,7 @@
             </ol>
         </div>
     </div>
-    
+
     <div class="step slide" data-x="11000" data-y="-1500">
         <div class='well'>
             <q>I think module</q>
@@ -126,14 +140,20 @@
         </div>
     </div>
 
-    <script>
-if ("ontouchstart" in document.documentElement) { 
-    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
-}
-</script>
+    <div class="step slide" data-x="12000" data-y="-1500">
+        <div class='well'>
+            <q>Intrepreter dosent care whether the code is ugly or not. But programer care. Programmer are human. So for the sake of humanity REFATCOR!! </q>
+        </div>
+    </div>
 
-<script src="js/impress.js"></script>
-<script>impress().init();</script>
+    <script>
+        if ("ontouchstart" in document.documentElement) { 
+            document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+        }
+    </script>
+
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
 
 </body>
 </html>

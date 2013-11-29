@@ -1,0 +1,39 @@
+Comments on program
+
+
+#Explain the program
+The sample program is simple. It is a program to calculate and print a statement of a customer’s charges at a video store. The program is told which movies a customer rented and for how long. It then calculates the charges, which depend on how long the movie is rented, and identifies the type of movie. There are three kinds of movies: regular, children’s, and new releases. In addition to calculating charges, the statement also computes frequent renter points, which vary depending on whether the film is a new release. 
+
+#Explain The class
+The program mainly consist of three class. Customer, Rental and Movie. 
+
+#What is wrong with this program
+   1 .Suppose there is requirement, client want to add a feature(say report, receipt pdf) where we need to calculate the charges. Now we need to rewrite the calculation logic. As you look at the code you can see that it is impossible to reuse any of the behavior of the current statement method for an HTML statement. Your only recourse is to write a whole new method that duplicates much of the behavior of statement.
+
+  2. This brings me to a second change. The users want to make changes to the way they classify movies, but they haven’t yet decided on the change they are going to make. They have a number of changes in mind. These changes will affect both the way renters are charged for movies and the way that frequent renter points are calculated .
+
+There is nothing wrong with a quick and dirty simple program. But if this is a representative fragment of a more complex system, then It will be problem. 
+The interpreter dosent care whether the code is ugly or clean. But when we change the systme, there are humans involved, human do care. A poorly designed is hard to change. Hard because it's hard to figure out where the changes are needed. If its hard to figure out what to change, there is a strong chance a program will make mistake and introudce bugs.
+
+#Aim of Refactoring
+My aim here is to extract the calculation logic so that i can reuse it to generate PDF or reports. And make it easy to add and modify new types of movie with out  changing large part of code.
+
+
+#Start Refactoring
+
+  1. Extract rental calculation method
+     Good code should communicate what it is doing clearly, and variable names are a key to clear code
+  2. Move charge method to rental
+     This immediately raises my suspicions that the method is on the wrong object. In most cases a method should be on the object whose data it uses; thus the method should be moved to the rental.
+  3. Charge to movie 
+ 
+    For this to work I had to pass in the length of the rental, which of course is
+    data from the rental. The method effectively uses two pieces of data, the length
+    of the rental and the type of the movie. Why do I prefer to pass the length of
+    rental to the movie rather than the movie type to the rental? It’s because the proposed
+    changes are all about adding new types. Type information generally tends
+    to be more volatile. If I change the movie type, I want the least ripple effect, so I
+    prefer to calculate the charge within the movie.
+ 4. Polymorphic 
+    Generate loose coupling between objects
+
